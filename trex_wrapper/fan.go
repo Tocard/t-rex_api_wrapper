@@ -8,10 +8,11 @@ import (
 	"t-rex_wrapper/utils"
 )
 
-func SetFanPercent(f float64) {
+// ManageFan interact with all t rex client listed in config file
+func ManageFan(f string) {
 	for i, s := range utils.Cfg.HostTarget {
 		fmt.Println(i, s, f)
-		values := map[string]string{"fan": fmt.Sprint(f)}
+		values := map[string]string{"fan": f}
 		jsonData, err := json.Marshal(values)
 		utils.Check(err)
 		_, err = http.Post("http://"+s, "application/json",

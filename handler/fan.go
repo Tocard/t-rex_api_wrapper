@@ -15,7 +15,7 @@ type Login struct {
 }
 
 type Fan struct {
-	Percent float64 `form:"percent" json:"percent" xml:"percent"`
+	FanConfig string `form:"fan_config" json:"fan_config" xml:"fan_config"`
 }
 
 func StartPage(c *gin.Context) {
@@ -25,12 +25,20 @@ func StartPage(c *gin.Context) {
 	c.String(200, "Success")
 }
 
-func SetFanPercent(c *gin.Context) {
+//ManageFan is the handler to interact with all client trex fan
+// @Summary Set value for remote fan
+// @Description Post value to remote fan
+// @Tags Fan
+// @Success 200 {string} string
+// @Failure 404 {string} string
+// @Router / [post]
+// @BasePath /managefan
+func ManageFan(c *gin.Context) {
 	fan := Fan{}
 	if err := c.ShouldBindJSON(&fan); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	trex_wrapper.SetFanPercent(fan.Percent)
+	trex_wrapper.ManageFan(fan.FanConfig)
 	c.JSON(http.StatusOK, gin.H{"status": "Succes"})
 }
