@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"t-rex_wrapper/logger"
 	"t-rex_wrapper/utils"
 )
 
@@ -14,10 +15,10 @@ func ManageFan(f string) {
 		fmt.Println(i, s, f)
 		values := map[string]string{"fan": f}
 		jsonData, err := json.Marshal(values)
-		utils.Check(err)
+		logger.ErrorMessage(err)
 		_, err = http.Post("http://"+s, "application/json",
 			bytes.NewBuffer(jsonData))
-		utils.Warn(err.Error())
+		logger.WarnErrorMessage(err)
 		//if err == nil {
 		//	var res map[string]interface{}
 		//	json.NewDecoder(resp.Body).Decode(&res)

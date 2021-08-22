@@ -1,4 +1,9 @@
-rig_hosts_list:
+api_port: 8080            # run the api on the port given in api_port
+api_log_file: ""          # if set to "", stdout is used, otherwise use the path given in api_log_file
+frontend_enabled: false   # run a frontend static html to manipule api, usefull if you don't want to do curl by yourself
+rig_hosts_list:           # list of t-rex client on your network to work with
   - "127.0.0.1:4067"
   - "127.0.0.2:4067"
   - "127.0.0.3:4067"
+api_username: "my_user"       # user used to auth yourself on the api
+api_password: "some_password"  # password combined with user on the api

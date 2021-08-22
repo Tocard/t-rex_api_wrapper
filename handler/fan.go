@@ -8,12 +8,6 @@ import (
 	"t-rex_wrapper/utils"
 )
 
-// Binding from JSON
-type Login struct {
-	User     string `form:"user" json:"user" xml:"user"  binding:"required"`
-	Password string `form:"password" json:"password" xml:"password" binding:"required"`
-}
-
 type Fan struct {
 	FanConfig string `form:"fan_config" json:"fan_config" xml:"fan_config"`
 }
