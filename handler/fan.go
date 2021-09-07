@@ -1,22 +1,13 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"t-rex_wrapper/trex_wrapper"
-	"t-rex_wrapper/utils"
 )
 
 type Fan struct {
 	FanConfig string `form:"fan_config" json:"fan_config" xml:"fan_config"`
-}
-
-func StartPage(c *gin.Context) {
-	for i, s := range utils.Cfg.HostTarget {
-		fmt.Println(i, s)
-	}
-	c.String(200, "Success")
 }
 
 //ManageFan is the handler to interact with all client trex fan

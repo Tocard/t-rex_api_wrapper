@@ -14,12 +14,12 @@ import (
 func engine() *gin.Engine {
 	server := gin.New()
 	server.Use(gin.Recovery())
-	server.GET("/testing", handler.StartPage)
 	server.Use(sessions.Sessions("mysession", sessions.NewCookieStore([]byte("secret"))))
 	server.POST("/login", handler.Login)
 	server.GET("/logout", handler.Logout)
 
-	private := server.Group("/v1")
+	server.POST("/signup", handler.StartPage)
+	private := server.Group("/trex")
 	private.Use(AuthRequired)
 	{
 		private.GET("/me", me)

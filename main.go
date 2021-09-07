@@ -10,6 +10,7 @@ import (
 func main() {
 	cli := utils.Cli()
 	utils.LoadYamlConfig(cli.FilePathConfig)
+	utils.LoadGrafanaYamlConfig("grafana.yml")
 	logger.InitLogger(utils.Cfg.ApiLogFile)
 	if utils.Cfg.FrontEnd == true {
 		front.InitFrontEnd()

@@ -1,0 +1,4 @@
+api_username: "grafana_api_username"       # user used to auth yourself on the api
+api_password: "grafana_api_password"  # password combined with user on the api
+es_user: "es_user"
+es_password: "es_password"
